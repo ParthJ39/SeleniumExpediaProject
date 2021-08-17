@@ -58,12 +58,13 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 	  
 	  tc=exr.createTest("MultiCity Test : " +testNum); 
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	  
+	  // For opening the Website
 	  driver.get(prop.getProperty("url"));
 	  driver.manage().window().maximize();
 	  tc.log(Status.PASS, "Url Opened");
-	  driver.findElement(By.linkText("Flights")).click();  //Select Flights
-	  driver.findElement(By.xpath(prop.getProperty("multi"))).click(); //Select Multi-City
+	  // For selecting Flights and Multi-City
+	  driver.findElement(By.linkText("Flights")).click();  
+	  driver.findElement(By.xpath(prop.getProperty("multi"))).click();
 
 	  char[] chars = leaving.toCharArray();
 	  for (char c: chars) {
@@ -108,18 +109,15 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 	
 	public static void enterData(String leaving, String going1, String going2, String date1, String date2) throws Exception{
 
-		// *********** FLIGHT 1 ********************
+		  // Entering Flight 1 Details
 		  driver.findElement(By.cssSelector(prop.getProperty("leaving"))).click();
 		  driver.findElement(By.cssSelector(prop.getProperty("leaving-search"))).sendKeys(leaving+ Keys.ENTER);
-		  //ac.moveToElement(driver.findElement(By.xpath("//li[@class='uitk-typeahead-result-item has-subtext uitk-typeahead-result-item-hover']//button[@type='button']"))).click().build().perform();
-		  
 		  
 		  driver.findElement(By.cssSelector(prop.getProperty("going1"))).click();
 		  driver.findElement(By.cssSelector(prop.getProperty("going1-search"))).sendKeys(going1+ Keys.ENTER);
-		  //ac.moveToElement(driver.findElement(By.xpath("//li[@class='uitk-typeahead-result-item has-subtext uitk-typeahead-result-item-hover']//button[@type='button']"))).click().build().perform();
+		 
 		  
-		  
-		// ************* FLIGHT 2 ********************
+		  // Entering Flight 2 Details
 	  	  driver.findElement(By.cssSelector(prop.getProperty("going2"))).click();
 		  driver.findElement(By.cssSelector(prop.getProperty("going2-search"))).sendKeys(going2 + Keys.ENTER);
 		 
@@ -136,7 +134,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 		
 		
 		try {
-		//************ Date 1 ************************
+		  // Selecting Date 1
 		  driver.findElement(By.cssSelector(prop.getProperty("date1-button"))).click();
 		  JavascriptExecutor js = (JavascriptExecutor)driver;
 		  js.executeScript("window.scrollBy(0,200)"); // for scrolling down
@@ -144,7 +142,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 		  driver.findElement(By.cssSelector(f1Date)).click(); 
 		  driver.findElement(By.cssSelector(prop.getProperty("date-done"))).click();
 		  
-		//************ Date 2 ************************
+		  // Selecting Date 2
 		  driver.findElement(By.xpath(prop.getProperty("date2-button"))).click();
 		  js.executeScript("window.scrollBy(0,200)"); // for scrolling down
 		  String f2Date = "button[aria-label='" + date2 + "']";
@@ -161,7 +159,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 	public static void tillCheckout() throws Exception {
 		
 		  tc.log(Status.PASS, "Source and Destination Entered");
-		
+		  // Selecting Flight 1
 		  JavascriptExecutor js = (JavascriptExecutor)driver;
 		  js.executeScript("window.scrollBy(0,500)"); 
 		  WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -170,6 +168,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 		  driver.findElement(By.cssSelector(prop.getProperty("continue"))).click();
 		  
 		  wt= new WebDriverWait(driver, 20);
+		  // Selecting Flight 2
 		  js.executeScript("window.scrollBy(0,500)"); Thread.sleep(2000);
 		  driver.findElement(By.xpath(prop.getProperty("flight2"))).click();
 		  driver.findElement(By.cssSelector(prop.getProperty("continue"))).click();
