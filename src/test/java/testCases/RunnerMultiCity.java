@@ -52,16 +52,16 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 	
 	@Test(dataProvider = "dp")
 	public void f(String leaving, String going1, String going2, String date1, String date2, String type) throws Exception {
-
-	  //Actions ac = new Actions(driver);
+		
 	  exr.attachReporter(new ExtentHtmlReporter("Multi-City.html"));
-	  
 	  tc=exr.createTest("MultiCity Test : " +testNum); 
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 	  // For opening the Website
 	  driver.get(prop.getProperty("url"));
 	  driver.manage().window().maximize();
 	  tc.log(Status.PASS, "Url Opened");
+		
 	  // For selecting Flights and Multi-City
 	  driver.findElement(By.linkText("Flights")).click();  
 	  driver.findElement(By.xpath(prop.getProperty("multi"))).click();
@@ -159,6 +159,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 	public static void tillCheckout() throws Exception {
 		
 		  tc.log(Status.PASS, "Source and Destination Entered");
+		
 		  // Selecting Flight 1
 		  JavascriptExecutor js = (JavascriptExecutor)driver;
 		  js.executeScript("window.scrollBy(0,500)"); 
@@ -168,6 +169,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 		  driver.findElement(By.cssSelector(prop.getProperty("continue"))).click();
 		  
 		  wt= new WebDriverWait(driver, 20);
+		
 		  // Selecting Flight 2
 		  js.executeScript("window.scrollBy(0,500)"); Thread.sleep(2000);
 		  driver.findElement(By.xpath(prop.getProperty("flight2"))).click();
