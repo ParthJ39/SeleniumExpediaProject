@@ -19,7 +19,7 @@ Features not to be tested:
   - Software interfaces 
   - Communication interfaces 
 
-
+This contains all the artifacts for our project Click [Here](https://github.com/ParthJ39/SeleniumExpediaProject/tree/master/Test-Artifacts)
 
 ## **Authors**
 - https://github.com/CHERAM
