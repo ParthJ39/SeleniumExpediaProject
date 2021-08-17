@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false">
+	<test thread-count="5" name="Sign up">
+		<classes>
+			<class name="testCases.RunnerSignUp" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="Sign in">
+		<classes>
+			<class name="testCases.RunnerSignin" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="One way flight booking">
+		<classes>
+			<class name="testCases.RunnerOnewayFlight" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="Return flight booking">
+		<classes>
+			<class name="testCases.RunnerReturnFlight" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="MultiCity flight booking">
+		<classes>
+			<class name="testCases.RunnerMultiCity" />
+		</classes>
+	</test>
+	<test thread-count="5" name="Hotel Booking">
+		<classes>
+			<class name="testCases.RunnerHotelBooking" />
+		</classes>
+	</test>
+</suite> <!-- Suite -->
