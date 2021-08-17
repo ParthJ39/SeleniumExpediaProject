@@ -279,6 +279,7 @@ public class RunnerMultiCity extends ReadWriteExcelFile {
 
 	  @AfterMethod
 		public void afterTest() {
+			// For closing the browser
 			driver.quit();
 		}
 }
